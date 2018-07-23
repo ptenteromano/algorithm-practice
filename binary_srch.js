@@ -4,8 +4,15 @@ let binarySearch = function (a, key, low, high) {
     high = a.length;
     low = 0;
   }
-  if (low > high) { return -1; }
-  var mid = Math.floor(high / 2) + 1;
+
+  if (low > high) { 
+    return -1; 
+  }
+
+  var mid = Math.floor(high / 2);
+  if (mid < low) {
+    mid = low;
+  } 
 
   if (key === a[mid]) {
     return mid;
@@ -19,9 +26,16 @@ let binarySearch = function (a, key, low, high) {
   return -1;
 };
 
-var array = [1, 50, 80, 101, 300, 2018];
-var find = 80;
+var array = [1, 50, 80, 101, 300, 2018, 2022, 2102];
+var find = 201;
 
-
+// expected read through all indices in order
+for (let nums of array) {
+  console.log(binarySearch(array, nums));
+  console.log("-------");
+}
+// expected to be -1
 console.log(binarySearch(array, find));
+
+
 
