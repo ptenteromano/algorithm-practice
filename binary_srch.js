@@ -1,7 +1,7 @@
 // a is sorted array
 let binarySearch = function (a, key, low, high) {
   if (high === undefined || low === undefined) {
-    high = a.length;
+    high = a.length - 1;
     low = 0;
   }
 
