@@ -1,7 +1,11 @@
 // a is sorted array
-const binarySearch = (a, key, low, high) => {
-  if (low < high) { return -1; }   
-  const mid = (high / 2) + 1;
+let binarySearch = function (a, key, low, high) {
+  if (high === undefined || low === undefined) {
+    high = a.length;
+    low = 0;
+  }
+  if (low > high) { return -1; }
+  var mid = Math.floor(high / 2) + 1;
 
   if (key === a[mid]) {
     return mid;
@@ -15,8 +19,9 @@ const binarySearch = (a, key, low, high) => {
   return -1;
 };
 
-const array = [1, 50, 80, 101, 300, 2018];
-const find = 80;
+var array = [1, 50, 80, 101, 300, 2018];
+var find = 80;
 
-const a = binarySearch(array, find, 0, array.length);
-console.log(a);
+
+console.log(binarySearch(array, find));
+
