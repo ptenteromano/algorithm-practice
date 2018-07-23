@@ -25,4 +25,5 @@ let binary_Search = function(a, key, low, high) {
 let array = [1, 50, 80, 101, 300, 2018];
 let find = 80;
 
-console.log(binary_search(array, find));
+binary_Search(array, find);
+console.log(binary_search);
