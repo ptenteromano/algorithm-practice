@@ -31,11 +31,10 @@ var find = 201;
 
 // expected read through all indices in order
 for (let nums of array) {
-  console.log(binarySearch(array, nums));
+  let a = binarySearch(array, nums);
+  console.log("Found at index " + a);
+  console.log("Number = " + array[a]);
   console.log("-------");
 }
 // expected to be -1
 console.log(binarySearch(array, find));
-
-
-
