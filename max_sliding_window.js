@@ -7,23 +7,45 @@ let max_sliding_window = function(arr, window_size) {
   let list_ = [];
 
   // finding max of first window in array
-  // storing the INDEX of the max
+  // storing the INDEX of the max 
+  // will end up holding two indices if window_size > 1
+  // but Max stays at the HEAD ie: list_[0]
   for (let i = 0; i < window_size; i++) {
-    while(list_.length > 0 && arr[i] >= arr[list_[list_.length - 1]]) {
+    // compares current array index with last elements in window list
+    // removes if current is larger
+    while (list_.length > 0 && arr[i] >= arr[list_[list_.length - 1]]) {
       list_.pop();
     }
     list_.push(i);
   }
 
-  return list_;
+  // clear trailing smaller numbers and
+  // shift through the rest of the array with the window
+  for (let i = window_size; i < arr.length; i++) {
+    while (list_.length > 0 && arr[i] >= arr[list_[list_.length] -1]) {
+      list_.pop();
+    }
 
+    // (i - window_size) gives the index of 'list_' head!
+    if (list_.length > 0 && (list_[0] <= i - window_size)) {
+      // shift method is like pop but on the head
+      list_.shift();
+    }
 
+    list_.push(i);
+    // remember list_ only holds the index of the numbers
+    result.push(arr[list_[0]]);
+  }
+
+  return result;
 };
 
 
 let a = [3, 5, -2, 1, 0, 50];
-let window = 4;
+let winSize = 4;
 
-let x = max_sliding_window(a, window);
+let x = max_sliding_window(a, winSize);
 
 console.log(x);
+
+
