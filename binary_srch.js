@@ -1,3 +1,8 @@
+// Philip Tenteromano
+// Binary Search
+// O(log n) runtime 
+// O(1) memory complexity
+
 // a is sorted array
 let binarySearch = function (a, key, low, high) {
   if (high === undefined || low === undefined) {

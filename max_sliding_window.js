@@ -1,3 +1,9 @@
+// Philip Tenteromano
+// Sliding Window Algorithm
+// O(n) Linear runtime 
+
+// window size in array, store max in the window as it slides to end
+
 let max_sliding_window = function(arr, window_size) {
   if (window_size > arr.length) {
     return "Window exceeds List Size";
@@ -19,10 +25,12 @@ let max_sliding_window = function(arr, window_size) {
     list_.push(i);
   }
 
+  result.push(arr[list_[0]]);
+
   // clear trailing smaller numbers and
   // shift through the rest of the array with the window
   for (let i = window_size; i < arr.length; i++) {
-    while (list_.length > 0 && arr[i] >= arr[list_[list_.length] -1]) {
+    while (list_.length > 0 && arr[i] >= arr[list_[list_.length - 1]]) {
       list_.pop();
     }
 
@@ -41,11 +49,15 @@ let max_sliding_window = function(arr, window_size) {
 };
 
 
-let a = [3, 5, -2, 1, 0, 50];
-let winSize = 4;
+let a = [3, 5, -2, 8, -3, 12];
 
-let x = max_sliding_window(a, winSize);
+console.log(max_sliding_window(a, 2));
+console.log("-----------------");
+console.log(max_sliding_window(a, 3));
+console.log("-----------------");
+console.log(max_sliding_window(a, 4));
+console.log("-----------------");
+console.log(max_sliding_window(a, 5));
 
-console.log(x);
 
 
