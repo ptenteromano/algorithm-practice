@@ -1,6 +1,7 @@
 // Philip Tenteromano
 // Sliding Window Algorithm
 // O(n) Linear runtime 
+// O(w) memory complexity (w == window size)
 
 // window size in array, store max in the window as it slides to end
 
@@ -13,9 +14,7 @@ let max_sliding_window = function(arr, window_size) {
   let list_ = [];
 
   // finding max of first window in array
-  // storing the INDEX of the max 
-  // will end up holding two indices if window_size > 1
-  // but Max stays at the HEAD ie: list_[0]
+  // storing the INDEX of the max -- it stays at list_[0]
   for (let i = 0; i < window_size; i++) {
     // compares current array index with last elements in window list
     // removes if current is larger
