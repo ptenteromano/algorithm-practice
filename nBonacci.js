@@ -1,5 +1,6 @@
-//each of its first N elements are equal to 1
+// each of its first N elements are equal to 1
 // nBon = m-n + m-(n-1) +... + m-(n==1)
+// when m <= n, return 1
 // O(n^m)
 function nBonacci(n, m) {
   if (m <= 1 || m <= n) return 1;
