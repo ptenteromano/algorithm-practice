@@ -19,7 +19,7 @@ const words = [
 
 // make copy of no whitespace, all lowercase, sorted words
 function cleanAndSortWordsInArray(arr) {
-  let result = [];
+  const result = [];
   for (let i = 0; i < arr.length; i++) {
     result.push(
       arr[i]
@@ -36,9 +36,9 @@ function cleanAndSortWordsInArray(arr) {
 // O(n) algorithm despite two for loops O(n+n) = O(n)
 // could be done all in one loop for slightly better performance
 function findAnagrams(arr) {
-  let mapAnagrams = {};
+  const mapAnagrams = {};
 
-  let sorted = cleanAndSortWordsInArray(arr);
+  const sorted = cleanAndSortWordsInArray(arr);
 
   for (let i = 0; i < sorted.length; i++) {
     sorted[i] in mapAnagrams
