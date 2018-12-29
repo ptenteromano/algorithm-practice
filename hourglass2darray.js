@@ -38,16 +38,19 @@ while (i <= 6) {
   i++;
 }
 
+// algorithm
 function getHourglasses(arr) {
-  let max = -100000;
-  let current;
+  let max, current;
   let first = true;
   let n = arr.length - 2;
 
   // define an hourglass
-  // [r][0-2],[r+1][1],[r+2][0-2]
+  // [r][0..2]
+  // [r + 1][1] 
+  // [r + 2][0..2]
   for (let r = 0; r < n; r++) {
     for (let c = 0; c < n; c++) {
+      // calc hourglass
       current =
         arr[r][c] +
         arr[r][c + 1] +
@@ -56,13 +59,16 @@ function getHourglasses(arr) {
         arr[r + 2][c] +
         arr[r + 2][c + 1] +
         arr[r + 2][c + 2];
-      if (current !== undefined && max < current) {
-        max = current;
-        first = false;
-      }
-      if (current !== undefined && first) {
-        max = current;
-        first = false;
+      // ensure current is a number, check for max
+      if (current !== undefined) {
+        if (max < current) {
+          max = current;
+          first = false;
+        }
+        else if (first) {
+          max = current;
+          first = false;
+        }
       }
     }
   }
