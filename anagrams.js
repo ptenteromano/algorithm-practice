@@ -33,7 +33,7 @@ function cleanAndSortWordsInArray(arr) {
   return result;
 }
 
-// O(n) algorithm despite two for loops O(n+n) = O(n)
+// O(n) algorithm despite two for loops O(n+n) => O(n)
 // could be done all in one loop for slightly better performance
 function findAnagrams(arr) {
   const mapAnagrams = {};
