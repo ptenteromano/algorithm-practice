@@ -44,15 +44,16 @@ console.log(jumpingOnClouds(Clouds)); // 6 jumps
 function jumpingOnCloudsWithEnergy(c, k) {
   let energy = 100;
   let index = 0;
+  let finished = false;
 
-  while (true) {
+  while (!finished) {
     if (index + k >= c.length) index = 0;
     else index += k;
 
     energy -= 1;
     if (c[index] === 1) energy -= 2;
 
-    if (index === 0) break;
+    if (index === 0) finished = true;
   }
 
   return energy;

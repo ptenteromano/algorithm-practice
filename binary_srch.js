@@ -5,15 +5,16 @@
 
 // a is sorted array
 let binarySearch = function (a, key, low, high) {
+  // initial search 
   if (high === undefined || low === undefined) {
     high = a.length - 1;
     low = 0;
   }
-
+  // couldnt find item
   if (low > high) { 
     return -1; 
   }
-
+  // get middle value
   var mid = Math.floor(high / 2);
   if (mid < low) {
     mid = low;
