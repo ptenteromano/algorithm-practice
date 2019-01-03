@@ -36,3 +36,28 @@ const Clouds = [0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0];
 
 console.log(jumpingOnClouds(Clouds)); // 6 jumps
 
+// another version where where jump value is given
+// energy starts at 100, each k jump is -1 energy
+// if land on a bad cloud, -2 extra energy
+// if the end of the clouds is reached, jump back home to 0 index
+
+function jumpingOnCloudsWithEnergy(c, k) {
+  let energy = 100;
+  let index = 0;
+
+  while (true) {
+    if (index + k >= c.length) index = 0;
+    else index += k;
+
+    energy -= 1;
+    if (c[index] === 1) energy -= 2;
+
+    if (index === 0) break;
+  }
+
+  return energy;
+}
+
+console.log(jumpingOnCloudsWithEnergy(Clouds, 2)); // 86 energy leftover
+// -3, -3, -3, -1, -3, -1 = -14
+// 100 = 14 = 86
