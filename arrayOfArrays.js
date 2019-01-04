@@ -7,8 +7,6 @@ function joinArrayOfArrays(arr) {
     result = result.concat(arr[i]);
   }
 
-  // return arr[0].concat(arr[1]);
-
   return result;
 }
 
@@ -25,3 +23,4 @@ function sum(a, b) {
 const y = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 console.log(y.reduce(sum, 0));
+console.log(y);
