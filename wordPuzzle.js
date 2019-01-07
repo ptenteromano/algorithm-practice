@@ -11,6 +11,13 @@ const puzzle = [
   ["P", "B", "E", "F", "T"]
 ];
 
+// check entire crossword
+function crossword(puzzle, word) {
+  verticalCrossword(puzzle, word);
+  horizontalCrossword(puzzle, word);
+  diagnolCrossword(puzzle, word);
+}
+
 function verticalCrossword(puzzle, word) {
   let index = 0;
   let checkStr = "";

@@ -53,7 +53,7 @@ function horseRaceOptimized(horses, numHorses, numLanes) {
     } else if (index === 1) {
       finalRace = finalRace.concat(horses[i].slice(0, 2)); // take 0,1 from 2nd best bracket
     } else if (index === 2) {
-      finalRace = finalRace.concat(horses[i][0]); // we only want the best of the 3rd bracket
+      finalRace = finalRace.concat(horses[i]); // we only want the best of the 3rd bracket
     }
   }
 
@@ -63,15 +63,15 @@ function horseRaceOptimized(horses, numHorses, numLanes) {
 
   // insert into the top 3
   top3.push(topInEach[0]); // we have the #1 guy
-  top3.push(finalRace[0], finalRace[1]);
+  top3.push(finalRace[0], finalRace[1]); // the 1st & 2nd guy in the lst race are #2, #3
 
-  console.log("the best 3 horses: ", top3);
+  console.log("The best 3 horses: ", top3);
 
   return raceCount;
 }
 
 console.log(
-  "How many races: ",
+  "Optimized races: ",
   horseRaceOptimized(horses, numHorses, numLanes)
 );
 console.log(horses); // for debugging
@@ -79,44 +79,60 @@ console.log(horses); // for debugging
 // console.log("-------");
 // BRUTE FORCE -- ignore for now
 // writing this out to be most verbose about 5 lanes racing 5 horses === 1 race
-function horseRaceBruteForce() {
-  let topThreeArr = [];
-
-  // first 5 races
-  for (let i = 0; i < numHorses / numLanes; i++) {
-    // set races
-    let startHorseIndex = numLanes * raceCount;
-    let endHorseIndex = (numHorses / numLanes) * raceCount + 5 || numLanes;
-    console.log(startHorseIndex, endHorseIndex);
-
-    for (let k = startHorseIndex; k < endHorseIndex; k++) {
-      if (!topThreeArr.includes(horses[k])) {
-        if (horses[k] > topThreeArr[0]) {
-          topThreeArr.unshift(horses[k]);
-        } else if (horses[k] > topThreeArr[1]) {
-          topThreeArr.unshift(horses[k]);
-        } else if (horses[k] > topThreeArr[2]) {
-          topThreeArr.unshift(horses[k]);
-        }
-
-        topThreeArr.sort((a, b) => b - a);
-
-        while (topThreeArr.length > 3) {
-          topThreeArr.pop();
-        }
-        console.log(topThreeArr);
-      }
-    }
-    raceCount++;
+function horseRaceBruteForce(horses2d) {
+  // reorganize 2d array into 1d array
+  let horses = [];
+  for (let h = 0; h < horses2d.length; h++) {
+    horses = horses.concat(horses2d[h]);
   }
 
-  //
-  console.log(raceCount);
+  const top3 = [0, 0, 0];
+  let raceCount = 0;
 
+  const filterTop = top => {
+    top.sort((a, b) => b - a);
+    while (top.length > 3) top.pop();
+  };
+
+  // first race
+  for (let k = 0; k < numLanes; k++) {
+    if (!top3.includes(horses[k])) {
+      if (horses[k] > top3[0] || horses[k] > top3[1] || horses[k] > top3[2]) {
+        top3.push(horses[k]);
+      }
+    }
+  }
+  raceCount++;
+  console.log;
+  // sort and trim top3
+  filterTop(top3);
+
+  // remaining 10 races
+  let i = numLanes; // start with the 6th horse
+  let fillIns;
+  while (i < numHorses) {
+    fillIns = 0;
+    // fill in 2 into the race, sort and elimate bottom 2
+    while (fillIns < 2) {
+      top3.push(horses[i]);
+      fillIns++;
+      i++;
+    }
+
+    if (fillIns === 2) {
+      filterTop(top3);
+      raceCount++;
+    }
+  }
+
+  console.log("Brute force best 3: ", top3);
+  return raceCount;
   // debugging
-  const newH = [horses[0], horses[1], horses[2], horses[3], horses[4]].sort(
-    (a, b) => a > b
-  );
+  // const newH = [horses, horses[1], horses[2], horses[3], horses[4]].sort(
+  //   (a, b) => a > b
+  // );
 
-  console.log(newH);
+  // console.log(newH);
 }
+
+console.log("Brute force race count: ", horseRaceBruteForce(horses));
