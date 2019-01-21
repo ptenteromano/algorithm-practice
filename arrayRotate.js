@@ -70,5 +70,5 @@ function rightArrayRotation(a, d) {
 console.log(rightArrayRotation(a, 2));
 
 // juggling algorithm using GCD coming soon
-const gcd = require("./gcd");
-console.log(gcd(3, 18));
+const gcd = require("./gcd").gcd;
+console.log(gcd(3, 18)); // 3
