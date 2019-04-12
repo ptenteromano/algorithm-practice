@@ -31,6 +31,7 @@ function createFib() {
     if (x) {
       [i, k] = [1, 1];
       first = true;
+      return i;
     }
     if (first) {
       first = false;
@@ -65,4 +66,7 @@ console.log(fibSeq()); // a MASSIVE NUMBER
 // reset it with a dummy variable
 fibSeq("reset!");
 
+console.log(fibSeq());
+console.log(fibSeq());
+console.log(fibSeq());
 console.log(fibSeq());
