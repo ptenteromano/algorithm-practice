@@ -7,6 +7,7 @@
 // output: [5,6,1,2,3,4]
 
 const a = [1, 2, 3, 4, 5, 6, 7, 8];
+const arr = [1, 2, 3, 4, 5, 6, 7, 8];
 
 // Method #1 - take '0..d' values and 'd..length-1' values and concat
 function leftArrayRotation(a, d) {
@@ -26,7 +27,7 @@ function leftArrayRotation(a, d) {
   return front.concat(back);
 }
 
-console.log(leftArrayRotation(a, 12));
+// console.log(leftArrayRotation(a, 1));
 
 // Method #2 - shift array one by one
 function leftArrayRotation2(a, d) {
@@ -46,10 +47,23 @@ function leftArrayRotation2(a, d) {
   return b;
 }
 
-console.log(leftArrayRotation2(a, 5));
+// console.log(leftArrayRotation2(a, 5));
+
+function rightArrayRotation(a, d) {
+  d = d % a.length;
+
+  fromBack = a.length - d;
+
+  const back = a.slice(fromBack);
+  const front = a.slice(0, fromBack);
+
+  return back.concat(front);
+}
+
+console.log(rightArrayRotation(arr, 3));
 
 // Right array rotation using method 2 to shift one by one
-function rightArrayRotation(a, d) {
+function rightArrayRotation2(a, d) {
   const b = a.slice();
   let i = 0;
 
@@ -67,8 +81,8 @@ function rightArrayRotation(a, d) {
   return b;
 }
 
-console.log(rightArrayRotation(a, 2));
+console.log(rightArrayRotation2(arr, 3));
 
 // juggling algorithm using GCD coming soon
-const gcd = require("./gcd").gcd;
-console.log(gcd(3, 18)); // 3
+// const gcd = require("./gcd").gcd;
+// console.log(gcd(3, 18)); // 3
