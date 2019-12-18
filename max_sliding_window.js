@@ -1,6 +1,6 @@
 // Philip Tenteromano
 // Sliding Window Algorithm
-// O(n) Linear runtime 
+// O(n) Linear runtime
 // O(w) memory complexity (w == window size)
 
 // window size in array, store max in the window as it slides to end
@@ -46,7 +46,6 @@ let max_sliding_window = function(arr, window_size) {
 
   return result;
 };
-
 
 let a = [3, 5, -2, 8, -3, 12];
 

@@ -40,7 +40,7 @@ const factorialPrimeFactors = (n, factorsArr = []) => {
   // base case is the smallest prime number
   if (n === 2) {
     factorsArr.push(2);
-    return factorsArr.sort((a,b) => a > b);
+    return factorsArr.sort((a, b) => a > b);
   } else if (isPrime(n)) {
     // if a prime but not 2, we want it
     factorsArr.push(n);
@@ -69,7 +69,7 @@ const fixOutput = arr => {
       outputString += num.toString() + "^" + countOfNum.toString();
     }
     if (i + 1 !== unique.length) {
-      outputString += " * "
+      outputString += " * ";
     }
   }
 
@@ -84,12 +84,12 @@ const factorial = n => {
 };
 
 // PROOF - change this number (too large, too long)
-const testNum = 12
+const testNum = 12;
 
 // timer
-console.time("function call")
-result = factorialPrimeFactors(testNum)
-console.timeEnd("function call")
+console.time("function call");
+result = factorialPrimeFactors(testNum);
+console.timeEnd("function call");
 
 a = result.reduce((a, b) => a * b);
 b = factorial(testNum);

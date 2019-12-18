@@ -11,11 +11,14 @@ function decToBinary(num) {
   let binArr = [];
   let r;
 
-  // continuously split num in half
-  // remainder will either be 0 or 1, that's our bin num
   while (num > 0) {
+    // remainder will either be 0 or 1, that's our bin num
     r = num % 2;
+
+    // continuously split num in half
     num = Math.floor(num / 2);
+
+    // places the remainder in the front (since left is most signifcant)
     binArr.unshift(r);
   }
 
@@ -34,15 +37,18 @@ function binToDec(num) {
   let result = 0; // our decimal return value
   const length = num.length - 1; // 0-index based length
   let index = length; // start from right (least significant)
-  let curr, pow; // iteration and power vars
+  let bin, pow; // iteration and power vars
 
   while (index >= 0) {
     // convert single digit back to integer
-    curr = parseInt(num[index], 10);
+    bin = parseInt(num[index], 10);
+
     // simple equation to get the power as index decrements
+    // power grows larger
     pow = length - index;
+
     // 1 or 0 x (2^pow)
-    result += curr * Math.pow(2, pow);
+    result += bin * Math.pow(2, pow);
 
     index--;
   }
