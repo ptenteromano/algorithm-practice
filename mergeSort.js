@@ -17,7 +17,7 @@ const splitArr = (arr) => {
   return merge(splitArr(leftHalf), splitArr(rightHalf));
 };
 
-// O(2n) sorting algorithm
+// O(2n) sorting algorithm === O(n)
 // Only possible when there are two sorted arrays
 // Note: this is the assumption that makes mergeSort fast!
 const merge = (left, right) => {
@@ -54,3 +54,13 @@ const b = [3, 2, 1]; // 3
 
 console.log(mergeSort(a));
 console.log(mergeSort(b));
+
+/*
+ * O(n log n) runtime
+ * Because the halving of an array is a logarithm
+ * this is where the Log n comes from
+ * The n is the sorting on each of the log n's
+ *
+ * This, "n * log n" runtime
+
+*/
