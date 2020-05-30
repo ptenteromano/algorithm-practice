@@ -29,6 +29,7 @@ const merge = (left, right) => {
    * Since both arrays are sorted, we only have do O(2n) comparisons
    * How? We give a left and right index and move each along, always adding
    * O(2n) comparisons is much much better than any other kind of sorting
+   * Also note 2n is the size of the entire array (left + right)
   */
   while (l < left.length && r < right.length) {
     if (left[l] < right[r]) {
