@@ -28,7 +28,10 @@ const merge = (left, right) => {
     }
   }
 
-  return result.concat(left.slice(l)).concat(right.slice(r));
+  if (left[l]) result.push(left[l]);
+  if (right[r]) result.push(right[r]);
+
+  return result;
 };
 
 const a = [3, 4, 1, -5, 9, 2]; // 6
