@@ -1,9 +1,11 @@
 // Ascending MergeSort
+// Alias
 const mergeSort = (arr) => {
   return splitArr(arr);
 };
 
 // Break down arrays in halves
+// Function named semantically
 const splitArr = (arr) => {
   // Base Case
   if (arr.length <= 1) return arr;
@@ -30,32 +32,24 @@ const merge = (left, right) => {
    * How? We give a left and right index and move each along, always adding
    * O(2n) comparisons is much much better than any other kind of sorting
    * Also note 2n is the size of the entire array (left + right)
-  */
-  while (l < left.length && r < right.length) {
-    if (left[l] < right[r]) {
-      // Store and move left index up
-      result.push(left[l]);
-      l++;
-    } else {
-      // Store and move right index up
-      result.push(right[r]);
-      r++;
-    }
-  }
+   */
+  while (l < left.length || r < right.length) {
+    const [val, incLeft] = comparisonHelper(left[l], right[r]);
+    result.push(val);
 
-  // There should be a leftover idx on odd-number splits
-  if (left[l]) result.push(left[l]);
-  if (right[r]) result.push(right[r]);
+    incLeft ? l++ : r++;
+  }
 
   return result;
 };
 
 const a = [3, 4, 1, -5, 9, 2]; // 6
 const b = [3, 2, 1]; // 3
+const c = [-3, 20, 1, 12]; // 3
 
 console.log(mergeSort(a));
 console.log(mergeSort(b));
-
+console.log(mergeSort(c));
 /*
  * O(n log n) runtime
  * Because the halving of an array is a logarithm
@@ -63,5 +57,22 @@ console.log(mergeSort(b));
  * The n is the sorting on each of the log n's
  *
  * This, "n * log n" runtime
-
 */
+
+
+/*
+ * Helper to compare values
+ * Checks for undefined to error check odd-length arrays
+ *
+ * Return [value to be appended, true for left, false for right]
+ *
+ * Defined as a 'function' to enable Hoisting
+*/
+function comparisonHelper(a, b) {
+  if (!b) return [a, true];
+  if (!a) return [b, false];
+
+  if (a < b) return [a, true];
+
+  return [b, false];
+};
