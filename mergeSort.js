@@ -57,8 +57,7 @@ console.log(mergeSort(c));
  * The n is the sorting on each of the log n's
  *
  * This, "n * log n" runtime
-*/
-
+ */
 
 /*
  * Helper to compare values
@@ -67,7 +66,7 @@ console.log(mergeSort(c));
  * Return [value to be appended, true for left, false for right]
  *
  * Defined as a 'function' to enable Hoisting
-*/
+ */
 function comparisonHelper(a, b) {
   if (!b) return [a, true];
   if (!a) return [b, false];
@@ -75,4 +74,4 @@ function comparisonHelper(a, b) {
   if (a < b) return [a, true];
 
   return [b, false];
-};
+}

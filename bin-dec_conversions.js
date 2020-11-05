@@ -9,17 +9,17 @@ let decNum = 302;
 function decToBinary(num) {
   // array to store 0's and 1's
   let binArr = [];
-  let r;
+  let zeroOrOne;
 
   while (num > 0) {
     // remainder will either be 0 or 1, that's our bin num
-    r = num % 2;
+    zeroOrOne = num % 2;
 
-    // continuously split num in half
+    // continuously split num in half, take Floor
     num = Math.floor(num / 2);
 
     // places the remainder in the front (since left is most signifcant)
-    binArr.unshift(r);
+    binArr.unshift(zeroOrOne);
   }
 
   // join the array and parse into integer
@@ -28,6 +28,11 @@ function decToBinary(num) {
 
 const convert1 = decToBinary(decNum);
 console.log(`Decimal Number: ${decNum} converted to ${convert1}`);
+console.log("Checker: ", parseInt(convert1, 2));
+
+console.log("--------------------------------");
+
+// ----------------------------------------------------------------
 
 // binary to base 10 algorithm
 function binToDec(num) {
@@ -37,18 +42,18 @@ function binToDec(num) {
   let result = 0; // our decimal return value
   const length = num.length - 1; // 0-index based length
   let index = length; // start from right (least significant)
-  let bin, pow; // iteration and power vars
+  let zeroOrOne, power; // binary and power vars
 
   while (index >= 0) {
     // convert single digit back to integer
-    bin = parseInt(num[index], 10);
+    zeroOrOne = parseInt(num[index], 10);
 
-    // simple equation to get the power as index decrements
-    // power grows larger
-    pow = length - index;
+    // Index starts on the right and will decrement, while length is a constant
+    // Causing power to get larger as it moves to the left
+    power = length - index;
 
     // 1 or 0 x (2^pow)
-    result += bin * Math.pow(2, pow);
+    result += zeroOrOne * (2 ** power);
 
     index--;
   }
@@ -56,5 +61,7 @@ function binToDec(num) {
   return result;
 }
 
-const convert2 = binToDec(convert1);
-console.log(`Binary Number: ${convert1} converted to ${convert2}`);
+const test = 1011
+const convert2 = binToDec(test);
+console.log(`Binary Number: ${test} converted to ${convert2}`);
+console.log("Checker: ", parseInt(convert2, 10));

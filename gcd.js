@@ -32,5 +32,5 @@ function gcd(a, b) {
 console.log(gcd(num1, num2));
 
 module.exports = {
-  gcd
+  gcd,
 };

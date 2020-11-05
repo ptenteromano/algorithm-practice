@@ -11,7 +11,7 @@ function jumpingOnClouds(c) {
   let jumps = 0;
   const finish = c.length - 1;
 
-  const checkDone = pos => pos === finish;
+  const checkDone = (pos) => pos === finish;
 
   let bigJ;
   let lilJ;

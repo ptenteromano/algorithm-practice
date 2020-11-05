@@ -46,7 +46,7 @@ function getHourglasses(arr) {
 
   // define an hourglass
   // [r][0..2]
-  // [r + 1][1] 
+  // [r + 1][1]
   // [r + 2][0..2]
   for (let r = 0; r < n; r++) {
     for (let c = 0; c < n; c++) {
@@ -64,8 +64,7 @@ function getHourglasses(arr) {
         if (max < current) {
           max = current;
           first = false;
-        }
-        else if (first) {
+        } else if (first) {
           max = current;
           first = false;
         }

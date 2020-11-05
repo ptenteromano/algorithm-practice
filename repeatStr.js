@@ -11,7 +11,7 @@ const count = 100; // n variable
 
 function repeatedString(s, n) {
   // split into array and count 'a' in original string
-  const countA = str => str.split("").filter(c => c === "a").length;
+  const countA = (str) => str.split("").filter((c) => c === "a").length;
 
   // how many full strings fit into 'n', * countA in str
   const floorA = Math.floor(n / s.length) * countA(s);

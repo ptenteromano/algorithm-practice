@@ -10,7 +10,11 @@ function joinArrayOfArrays(arr) {
   return result;
 }
 
-const x = [[1, 4], [true, false], ["x", "y"]];
+const x = [
+  [1, 4],
+  [true, false],
+  ["x", "y"],
+];
 
 console.log(joinArrayOfArrays(x));
 

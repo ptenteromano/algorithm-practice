@@ -14,7 +14,7 @@ const words = [
   "Smile",
   "dog",
   "e lVis",
-  "lIv es"
+  "lIv es",
 ];
 
 // make copy of no whitespace, all lowercase, sorted words
@@ -22,12 +22,7 @@ function cleanAndSortWordsInArray(arr) {
   const result = [];
   for (let i = 0; i < arr.length; i++) {
     result.push(
-      arr[i]
-        .toLowerCase()
-        .replace(/ +/g, "")
-        .split("")
-        .sort()
-        .join("")
+      arr[i].toLowerCase().replace(/ +/g, "").split("").sort().join("")
     );
   }
   return result;

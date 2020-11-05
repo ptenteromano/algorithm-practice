@@ -1,10 +1,10 @@
 // Using stack + dictionary
-export const matchingBrackets = str => {
+export const matchingBrackets = (str) => {
   const stack = [];
   const nests = {
     "(": ")",
     "{": "}",
-    "[": "]"
+    "[": "]",
   };
 
   for (let i = 0; i < str.length; i++) {

@@ -89,7 +89,7 @@ function horseRaceBruteForce(horses2d) {
   const top3 = [0, 0, 0];
   let raceCount = 0;
 
-  const filterTop = top => {
+  const filterTop = (top) => {
     top.sort((a, b) => b - a);
     while (top.length > 3) top.pop();
   };

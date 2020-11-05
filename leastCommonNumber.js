@@ -5,9 +5,8 @@
 // leveraging this, check each index, if not the same value
 // increment the lowest value, check, repeat
 
-
 // O(n) solution (worst case n is largest length of arrays)
-let findLeastCommonNumber = function(a, b, c) {
+let findLeastCommonNumber = function (a, b, c) {
   let i = 0; // a
   let j = 0; // b
   let k = 0; // c

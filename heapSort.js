@@ -13,9 +13,9 @@ class HeapSort {
 
     // Mathematical Index representations of parent and children
     // note - these are FUNCTIONS
-    this.parentIndex = child => Math.floor((child - 1) / 2);
-    this.leftChildIndex = parent => 2 * parent + 1;
-    this.rightChildIndex = parent => 2 * parent + 2;
+    this.parentIndex = (child) => Math.floor((child - 1) / 2);
+    this.leftChildIndex = (parent) => 2 * parent + 1;
+    this.rightChildIndex = (parent) => 2 * parent + 2;
   }
 
   // Public Methods

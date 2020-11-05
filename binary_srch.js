@@ -1,33 +1,33 @@
 // Philip Tenteromano
 // Binary Search
-// O(log n) runtime 
+// O(log n) runtime
 // O(1) memory complexity
 
 // a is sorted array
 let binarySearch = function (a, key, low, high) {
-  // initial search 
+  // initial search
   if (high === undefined || low === undefined) {
     high = a.length - 1;
     low = 0;
   }
   // couldnt find item
-  if (low > high) { 
-    return -1; 
+  if (low > high) {
+    return -1;
   }
   // get middle value
   var mid = Math.floor(high / 2);
   if (mid < low) {
     mid = low;
-  } 
+  }
 
   if (key === a[mid]) {
     return mid;
   }
   if (key > a[mid]) {
-    return binarySearch(a, key, (mid + 1), high);
+    return binarySearch(a, key, mid + 1, high);
   }
   if (key < a[mid]) {
-    return binarySearch(a, key, low, (mid - 1));
+    return binarySearch(a, key, low, mid - 1);
   }
   return -1;
 };

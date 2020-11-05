@@ -8,7 +8,7 @@ const puzzle = [
   ["B", "K", "T", "I", "T"],
   ["S", "I", "I", "P", "A"],
   ["L", "N", "M", "S", "R"],
-  ["P", "B", "E", "F", "T"]
+  ["P", "B", "E", "F", "T"],
 ];
 
 // check entire crossword

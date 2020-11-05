@@ -2,7 +2,7 @@
 // Helper functions using `num` as arg
 
 // Speedy prime func (num^1/2)
-const isPrime = num => {
+const isPrime = (num) => {
   if (num < 2) return false;
   for (let i = 2; i <= Math.sqrt(num); i++) {
     if (num % i === 0) return false;
@@ -54,7 +54,7 @@ const factorialPrimeFactors = (n, factorsArr = []) => {
 };
 
 // supplemental output string
-const fixOutput = arr => {
+const fixOutput = (arr) => {
   let outputString = "";
 
   const unique = arr.filter((item, i, ar) => ar.indexOf(item) === i);
@@ -77,7 +77,7 @@ const fixOutput = arr => {
 };
 
 // test/proof helper
-const factorial = n => {
+const factorial = (n) => {
   if (n <= 1) return 1;
 
   return n * factorial(n - 1);

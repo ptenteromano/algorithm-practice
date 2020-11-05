@@ -21,7 +21,7 @@ function countingValleys(n, s) {
   let belowSea = false;
 
   // true if up, false if down
-  const checkUp = step => step === "U";
+  const checkUp = (step) => step === "U";
 
   for (let i = 0; i < n; i++) {
     // check relation to sealevel
