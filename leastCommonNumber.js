@@ -13,7 +13,7 @@ let findLeastCommonNumber = function (a, b, c) {
 
   while (i < a.length && j < b.length && k < c.length) {
     console.log(a[i], b[j], c[k]);
-
+ 
     // check for lowest
     if (a[i] === b[j] && b[j] === c[k]) return a[i];
 

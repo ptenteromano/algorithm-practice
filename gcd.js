@@ -7,25 +7,25 @@ const num1 = 80;
 const num2 = 24;
 
 function gcd(a, b) {
-  // if equal, return
   if (a === b) return a;
 
-  // 'a' should be the larger number
+  // 'a' should be the larger number, this is a standardization
   if (a < b) {
     let temp = a;
     a = b;
     b = temp;
   }
 
-  // remainder
-  let r;
+  let remainder;
 
   while (true) {
-    r = a % b;
+    remainder = a % b;
+    // Shrink the values
     a = b;
-    b = r;
+    b = remainder;
+
     // no remainder means full-division, gcd found
-    if (r === 0) return a;
+    if (remainder === 0) return a;
   }
 }
 

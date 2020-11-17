@@ -3,7 +3,25 @@
 // using two conversion functions, change a base 10 number to binary and back again
 
 // any number we can think of
-let decNum = 302;
+
+
+// Binary - Base 2
+// 10 === 2
+// (2^n - 1) = maximum number
+// (1 * 2^1) + (0 * 2^0)
+
+// 1111
+// byte === 8 binary digits... bit
+
+// Decimal - Base 10
+// 4573 === 4000 + 500 + 70 + 3
+// (4 * 10^3) + (5 * 10^2) + (7 * 10^1) + (3 * 10^0)
+//
+
+// Hexidecimal - base 16
+// 0-9... A B C D E F
+
+const decNum = 302;
 
 // base 10 to binary algorithm
 function decToBinary(num) {
@@ -40,9 +58,12 @@ function binToDec(num) {
   num = num.toString();
 
   let result = 0; // our decimal return value
+
   const length = num.length - 1; // 0-index based length
   let index = length; // start from right (least significant)
   let zeroOrOne, power; // binary and power vars
+
+  [1, 1, 1, 1, 1, 1, 1]
 
   while (index >= 0) {
     // convert single digit back to integer
@@ -61,7 +82,7 @@ function binToDec(num) {
   return result;
 }
 
-const test = 1011
+const test = convert1 // 11 in binary
 const convert2 = binToDec(test);
 console.log(`Binary Number: ${test} converted to ${convert2}`);
 console.log("Checker: ", parseInt(convert2, 10));
