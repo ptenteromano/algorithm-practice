@@ -75,3 +75,5 @@ function getHourglasses(arr) {
 }
 
 console.log(getHourglasses(twoDarr));
+
+const a = [5,6,7];
