@@ -14,7 +14,7 @@ class Node {
   }
 
   removeLeft() {
-    this.left = null
+    this.left = null;
   }
 
   removeRight() {

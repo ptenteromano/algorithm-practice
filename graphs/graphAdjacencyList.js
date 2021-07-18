@@ -35,7 +35,7 @@ class GraphAL {
   }
 
   nodesNameOnly(airport) {
-    return this.getConnectingNodes(airport).map(node => node.destination)
+    return this.getConnectingNodes(airport).map((node) => node.destination);
   }
 
   numNodes() {
@@ -94,10 +94,9 @@ class GraphAL {
     }
   }
 
-  dijkstraLesson = (start, end) => {
+  dijkstraLesson(start, end) {
     const [distances, previous, nodes] = this._initObjects(start);
-    let smallest;
-    let connectedNodes;
+    let smallest, connectedNodes;
 
     // console.log({distances, previous, nodes})
     // As long as there is something to visit
@@ -109,7 +108,7 @@ class GraphAL {
       // Check if done
       if (smallest === end) {
         const path = this._buildPath(previous, smallest);
-        console.log({path, distance: distances[smallest]})
+        console.log({ path, distance: distances[smallest] });
         // Build path as a string
         return [path, distances[smallest]];
       }
@@ -129,11 +128,11 @@ class GraphAL {
           // Update the previous node (how to get to neighbor)
           previous[destination] = smallest;
           // Enqueue this neighbor in PQ with new priority distance
-          nodes.enqueue(destination, candidateWeight)
+          nodes.enqueue(destination, candidateWeight);
         }
       }
     }
-  };
+  }
 
   _initObjects(start) {
     const distances = {};
@@ -159,7 +158,7 @@ class GraphAL {
     let previous = previousObj[endNode];
 
     while (previous) {
-      results.push(previous)
+      results.push(previous);
       previous = previousObj[previous];
     }
 
