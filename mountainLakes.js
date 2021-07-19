@@ -1,3 +1,5 @@
+// Find area of rainfall inside the mountains
+
 const max = Math.max;
 const min = Math.min;
 
@@ -67,13 +69,20 @@ const trapWithPointers = (height) => {
   let rightMax = height[rightIdx];
   let area = 0;
 
+  // Left and right are heading towards each other
   while (leftIdx < rightIdx) {
+    // Advance the left side
     if (height[leftIdx] < height[rightIdx]) {
+      // Reassign the lefts maximum
       if (height[leftIdx] >= leftMax) leftMax = height[leftIdx];
+      // Otherwise we're in a downslope, get the difference
       else area += leftMax - height[leftIdx];
       leftIdx++;
+    // Advance the rightside
     } else {
+      // Reassign the rights maximum
       if (height[rightIdx] >= rightMax) rightMax = height[rightIdx];
+      // Otherwise we're in a downslope, get the difference
       else area += rightMax - height[rightIdx];
       rightIdx--;
     }

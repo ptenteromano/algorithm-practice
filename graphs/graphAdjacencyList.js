@@ -96,37 +96,41 @@ class GraphAL {
 
   dijkstraLesson(start, end) {
     const [distances, previous, nodes] = this._initObjects(start);
-    let smallest, connectedNodes;
+    let current, connectedNodes;
 
     // console.log({distances, previous, nodes})
     // As long as there is something to visit
     while (nodes.notEmpty()) {
       // Get next vertex to go through
-      // PQ makes assumption smallest curr distance will help get to solution faster
-      smallest = nodes.dequeue().val;
+      // PQ makes assumption smallset distance on queue will help get to solution faster
+      current = nodes.dequeue();
 
-      // Check if done
-      if (smallest === end) {
-        const path = this._buildPath(previous, smallest);
-        console.log({ path, distance: distances[smallest] });
-        // Build path as a string
-        return [path, distances[smallest]];
+      // Check if done, build path and distances
+      if (current === end) {
+        const path = this._buildPath(previous, current);
+        const results = {
+          path,
+          distance: distances[current]
+        };
+        console.log({...results})
+        return results;
       }
 
-      // Check all nodes connected to smallest
-      connectedNodes = this.getConnectingNodes(smallest);
+      // Check all nodes connected to current
+      connectedNodes = this.getConnectingNodes(current);
 
       for (let neighbor of connectedNodes) {
-        // Calculate new distance to neighboring node
         let { destination, weight } = neighbor;
-        let candidateWeight = distances[smallest] + weight;
+        // Calculate new distance to a neighboring node
+        // Currently stored current distance to current + weight to neighbor
+        let candidateWeight = distances[current] + weight;
 
-        // Check for updates
+        // Update smallest weight to neighboring node
         if (candidateWeight < distances[destination]) {
           // Update new shortest distance to neighbor
           distances[destination] = candidateWeight;
           // Update the previous node (how to get to neighbor)
-          previous[destination] = smallest;
+          previous[destination] = current;
           // Enqueue this neighbor in PQ with new priority distance
           nodes.enqueue(destination, candidateWeight);
         }

@@ -154,3 +154,5 @@ console.log("----------------------");
 console.log("\nFully Sorted Array in O(nlogn) Time");
 
 a.printSortedArray();
+
+module.exports = HeapSort

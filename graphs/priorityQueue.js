@@ -1,3 +1,4 @@
+// Binary heap priorityQueue
 class PriorityQueue {
   constructor() {
     this.values = [];
@@ -9,7 +10,7 @@ class PriorityQueue {
   }
 
   dequeue() {
-    return this.values.shift();
+    return this.values.shift().val;
   }
 
   notEmpty() {
