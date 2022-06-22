@@ -7,10 +7,10 @@ func isPerfectSquare(num int) bool {
     
     for low <= high {
         mid := (high + low) / 2
-        div, rem := num / mid, num % mid
+        div := num / mid 
         
         if div == mid {
-            return rem == 0
+            return num % mid == 0
         }
         
         if mid > div {
