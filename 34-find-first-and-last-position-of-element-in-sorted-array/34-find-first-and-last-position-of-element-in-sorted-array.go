@@ -7,8 +7,7 @@ func searchRange(nums []int, target int) []int {
         return []int{-1, -1}
     }
     
-    // Split the array and parse both sides
-    // This is a good problem for concurrency, as each side is completely separate memory addresses
+    // Hold our data from the threads
     bounds := make(chan int, 2)
     
     // Search lower half of array, in its own thread (goroutine)
@@ -20,29 +19,27 @@ func searchRange(nums []int, target int) []int {
             }
             low = temp
         } 
+        // Shovel the lower-bound into the Channel
         bounds<-low
     }(high)
-    
     
     // Search upper half of array, in its own thread (goroutine)
     go func(high int) {
         for {
-            if len(nums[high + 1:]) == 0 {
-                break
-            }
-
             temp := findTarget(nums[high + 1:], target)
             if temp == -1 {
                 break
             }
             high += temp + 1
         }
+        // Shovel the upper-bound into the Channel
         bounds<-high
     }(high)
     
     newLow := <-bounds
     newHigh := <-bounds
     
+    // No garauntee which one finishes first, so order them
     if newLow > newHigh {
         newLow, newHigh = newHigh, newLow
     }
