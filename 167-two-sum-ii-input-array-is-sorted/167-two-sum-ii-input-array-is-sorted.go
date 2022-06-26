@@ -3,10 +3,6 @@ func twoSum(numbers []int, target int) []int {
         diff := target - val 
         
         for {
-            if idx + 1 == len(numbers) {
-                break
-            }
-            
             diffIdx := binarySearch(numbers[(idx + 1):], diff)
             if diffIdx == -1 {
                 break
