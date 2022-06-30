@@ -1,24 +1,16 @@
 func countNegatives(grid [][]int) int {
-    // count, low, high := 0, 0, len(grid) - 1
-    
-    // Binary Search on a Row, if negative, count and remove entire column (+ ones beyond it)
-    // Continue down rows, doing the same (but now ignore last idx from columns above)
-//     for low <= high {
-//         mid := (low + high) / 2
-        
-//         if 
-//     }
     count, cutoff := 0, len(grid[0])
     
     for _, arr := range grid {
-        cutoff = cutoffIdx(arr[:cutoff])
+        if cutoff > 0 {
+            cutoff = cutoffIdx(arr[:cutoff])    
+        }
         count += len(grid[0]) - cutoff
     }
     return count
 }
 
 // BinarySearch on a row slice to find the cutoff
-// Return -1 if no negative numbers were found
 func cutoffIdx(arr []int) int {
     low, high := 0, len(arr) - 1
     smallestIdx := len(arr)
