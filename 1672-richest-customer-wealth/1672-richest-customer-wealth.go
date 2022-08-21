@@ -1,11 +1,15 @@
 func maximumWealth(accounts [][]int) int {
-    wealth := []int{}
+    max := -1
     
     for _, moneyAccts := range accounts {
-        wealth = append(wealth, sumAccts(moneyAccts))
+        totalValue := sumAccts(moneyAccts)
+        
+        if totalValue > max {
+            max = totalValue
+        }
     }
     
-    return maxWealth(wealth)
+    return max
 }
 
 func sumAccts(moneyAccts []int) int {
@@ -17,15 +21,3 @@ func sumAccts(moneyAccts []int) int {
     
     return sum
 }
-
-func maxWealth(wealth []int) int {
-    max := -1
-    
-    for _, sum := range wealth {
-        if sum > max {
-            max = sum
-        }
-    }
-    
-    return max
-} 
